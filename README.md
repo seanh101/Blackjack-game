@@ -28,9 +28,9 @@ If there is time to add more features, the following could be considered:
 
 ## Wireframe the UI
 
-<img src="Blackjack_wireframe.png"/>
+<img src="./Imgs/Blackjack_wireframe.png"/>
 
-- 2 starting cards for dealer and player
+- 2 starting cards for dealer and player.
 - 1 extra facedown card shown for deck
 - Hit stay and wager buttons located at bottom
 - Chip amount in box on right
