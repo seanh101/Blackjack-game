@@ -28,7 +28,7 @@ If there is time to add more features, the following could be considered:
 
 ## Wireframe the UI
 
-<img src="./Imgs/Blackjack_wireframe2.png"/>
+<img src="./Imgs/blackjack_wireframe2.png"/>
 
 - 2 starting cards for dealer and player.
 - 1 extra facedown card shown for deck
