@@ -1,14 +1,42 @@
 
-
+html {
+    background-color: green;
+}
 body {
     text-align: center;
+    
+}
 
+#game {
+    border-style: solid;
+    border-color: gold;
+    border-radius: 25px;
 }
 
 #dealer-cards img {
     height: 175px;
     width: 125px;
     margin: 1;
+    box-sizing: border-box;
+  display: inline-block;
+  margin: 5px 5px 25px 5px;
+  cursor: pointer;
+  /* Set the card's dimensions, and size it relative to
+     it's font size. */
+  font-size: inherit;
+  /* Add a default background color and border. */
+  background-color: #fff;
+  border-radius: 0.20em;
+  border: 1px solid #c3c3c3;
+  /* Scale and set the background settings. */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  /* "Hide" any text within the element (use text to be
+     simply compliant with screen readers, etc.). */
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 
@@ -17,23 +45,77 @@ body {
     height: 175px;
     width: 125px;
     margin: 1;
+    box-sizing: border-box;
+  display: inline-block;
+  margin: 5px 5px 25px 5px;
+  cursor: pointer;
+  /* Set the card's dimensions, and size it relative to
+     it's font size. */
+  font-size: inherit;
+  /* Add a default background color and border. */
+  background-color: #fff;
+  border-radius: 0.20em;
+  border: 1px solid #c3c3c3;
+  /* Scale and set the background settings. */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  /* "Hide" any text within the element (use text to be
+     simply compliant with screen readers, etc.). */
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-#hit {
+#hit, #stay {
     width: 100px;
     height: 50x;
     font-size: 20px;
-}
-
-#stay {
-    width: 100px;
-    height: 50x;
-    font-size: 20px;
+    border-width: thick;
+    border-color: gold;
 }
 
 #bet {
     width: 100px;
     height: 50x;
-    font-size: 20px;
+    font-size: 15px;
+    border-width: thick;
+    border-color: gold;
+}
+
+#results {
+    font-weight: bold;
+}
+
+#chip-amount {
+    text-align: right;
+}
+
+h1 {
+    font-size: 75px;
+    margin: 0 auto;
+    font-family: 'Lobster', cursive;
+    border-bottom-style: solid;
+    border-color: gold;
+    -webkit-text-stroke: .1px red;
+}
+h3 {
+    color: white;
+}
+
+#play-again {
+    width: 100px;
+    height: 50x;
+    font-size: 15px;
+    border-width: thick;
+    border-color: gold;
+
+}
+
+#bet-input {
+    width: 50px;
+    border-width: thick;
+    border-color: black;
+    border-style: dashed;
 }
 

@@ -8,6 +8,8 @@ let dealerAces = 0;
 let playerAces = 0;
 let faceDown;
 let playerCanHit = true;
+let chipAmount = 500;
+let betAmount = 0;
 
 // Constants
 const suits = ['spades', 'clubs', 'diamonds', 'hearts'];
@@ -18,6 +20,7 @@ window.onload = function() {
     createDeck();
     shuffleDeck();
     dealCards();
+    
 }
 
 function createDeck() {
@@ -75,6 +78,8 @@ function dealCards() {
     // event listeners
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
+
+    
 }
 
 function hit() {
@@ -93,7 +98,20 @@ function hit() {
     if (reduceAce(playerScore, playerAces) > 21) {
         playerCanHit = false;
     }
+    let message = "";
+        if (playerScore > 21) {
+            message = "YOU LOSE!";
+          
+        }
+    
+        
+        document.getElementById("dealer-score").innerText = dealerScore;
+        document.getElementById("player-score").innerText = playerScore;
+        document.getElementById("results").innerText = message;
+    
     }
+
+
 
     function stay() {
         dealerScore = reduceAce(dealerScore, dealerAces);
@@ -109,18 +127,23 @@ function hit() {
         let message = "";
         if (playerScore > 21) {
             message = "YOU LOSE!";
+          
         }
         else if (dealerScore > 21) {
             message = "YOU WIN";
+            
         }
         else if (playerScore === dealerScore) {
             message = "PUSH";
+            
         }
         else if (playerScore > dealerScore) {
             message = "YOU WIN!";
+            
         }
         else if (playerScore < dealerScore) {
             message = "YOU LOSE!";
+            
         }
         
         document.getElementById("dealer-score").innerText = dealerScore;
@@ -161,5 +184,60 @@ function reduceAce(playerScore, playerAces) {
     }
     return playerScore;
 }
+
+// Chips
+let playerChips = chipAmount;
+// Add event listener for bet button
+document.getElementById("bet").addEventListener("click", function() {
+    // Get bet amount entered by user
+    let betAmount = document.getElementById("bet-input").value;
+  
+  
+     // Convert bet amount to integer
+     betAmount = parseInt(betAmount);
+
+     // Subtract bet amount from player's chips and update display
+     playerChips -= betAmount;
+     document.getElementById("chips").innerHTML = `Chips: ${playerChips}`;
+ 
+     // Start the game
+     let gameResult = dealCards();
+ 
+     // Update player's chips based on game outcome
+     if (gameResult === "win") {
+       playerChips += betAmount * 2; // double the bet amount for a win
+       document.getElementById("results").innerHTML = "You win!";
+     } else {
+       document.getElementById("results").innerHTML = "You lose!";
+     }
+     document.getElementById("chips").innerHTML = `Chips: ${playerChips}`;
+   });
+ 
+   function updateChipsDisplay() {
+     document.getElementById("chips").innerText = playerChips;
+   }
+ 
+   function playAgain() {
+    // reset game variables
+    dealerHand = [];
+    playerHand = [];
+    dealerScore = 0;
+    playerScore = 0;
+    dealerAces = 0;
+    playerAces = 0;
+    faceDown = null;
+    playerCanHit = true;
+
+    // reset card images and result message
+    document.getElementById("dealer-cards").innerHTML = "";
+    document.getElementById("player-cards").innerHTML = "";
+    document.getElementById("results").innerText = "";
+
+    // shuffle and deal cards again
+    shuffleDeck();
+    dealCards();
+}
+
+document.getElementById("play-again").addEventListener("click", playAgain);
 
 
