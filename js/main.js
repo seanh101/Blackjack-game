@@ -46,22 +46,35 @@ function shuffleDeck() {
 
 // Start the game
 function dealCards() {
-    faceDown = deck.pop();
-    dealerScore += getRank(faceDown);
-    dealerAces += checkAce(faceDown);
-
-    // set dealer cards and score
-    while (dealerScore < 17) {
-        let cardImg = document.createElement("img");
-        let card = deck.pop();
-        let suit = card.split("-")[1];
-        let rank = card.split("-")[0];
-        cardImg.src = `./css/card-library/images/${suit}-r${rank}.svg`;
-        dealerScore += getRank(card);
-        dealerAces += checkAce(card);
-        document.getElementById("dealer-cards").append(cardImg);
-    }
-    console.log(dealerScore);
+    
+       // clear any existing cards
+       const dealerCardContainer = document.querySelector('#dealer-cards');
+       while (dealerCardContainer.firstElementChild) {
+           dealerCardContainer.firstElementChild.remove();
+       }
+   
+       // deal one card face-down
+       let faceDownCardImg = document.createElement("img");
+       let faceDownCard = deck.pop();
+       let faceDownSuit = faceDownCard.split("-")[1];
+       let faceDownRank = faceDownCard.split("-")[0];
+       faceDownCardImg.src = `./css/card-library/images/backs/red.svg`;
+       dealerScore += getRank(faceDownCard);
+       dealerAces += checkAce(faceDownCard);
+       dealerCardContainer.append(faceDownCardImg);
+   
+       // deal one card face-up
+       let faceUpCardImg = document.createElement("img");
+       let faceUpCard = deck.pop();
+       let faceUpSuit = faceUpCard.split("-")[1];
+       let faceUpRank = faceUpCard.split("-")[0];
+       faceUpCardImg.src = `./css/card-library/images/${faceUpSuit}-r${faceUpRank}.svg`;
+       dealerScore += getRank(faceUpCard);
+       dealerAces += checkAce(faceUpCard);
+       dealerCardContainer.append(faceUpCardImg);
+   
+       // set dealer score
+       console.log(dealerScore);
 
     // set player cards and score
     for (let i = 0; i < 2; i++) {
@@ -121,10 +134,11 @@ console.log(faceDown);
         playerCanHit = false;
         
         // reveal the face-down card
-        let suit = faceDown.split("-")[1];
-        let rank = faceDown.split("-")[0];
-        document.getElementById("faceDown").src = `./css/card-library/images/${suit}-r${rank}.svg`;
-    
+        let faceDownCardImg = document.createElement("img");
+        let faceDownCard = deck.pop();
+       let faceDownSuit = faceDownCard.split("-")[1];
+       let faceDownRank = faceDownCard.split("-")[0];
+       faceDownCardImg.src = `./css/card-library/images/backs/red.svg`;
         let message = "";
         if (playerScore > 21) {
             message = "YOU LOSE!";
@@ -235,6 +249,7 @@ document.getElementById("bet").addEventListener("click", function() {
     document.getElementById("results").innerText = "";
 
     // shuffle and deal cards again
+    createDeck();
     shuffleDeck();
     dealCards();
 }

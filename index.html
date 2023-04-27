@@ -13,36 +13,36 @@
 </head>
 <body>
 <div id="game">
-    <h1>♠♣ BlackJack ♦♥</h1>
-    <h2>Dealer: <span id="dealer-score"></span></h2>
-    <div id="dealer-cards" class="cards">
-    <img id="faceDown" src="/css/card-library/images/backs/red.svg">
+
+        <h1>♠♣ BlackJack ♦♥</h1>
+    <div id="dealer-card-container">
+        <h2>Dealer: <span id="dealer-score"></span></h2>
+        <div id="dealer-cards">
+        <img id="faceDown" src="/css/card-library/images/backs/red.svg">
+        </div>
     </div>
-<div id="wagering">
-    <div id="chips">
-        <h3>Chips: <span id="chip-amount">500</span></h3>
+        <div id="chips"><h3>Chips: <span id="chip-amount">500</span></h3>
+        </div>
+        <div id="bet-container">
+            <input type="number" id="bet-input" placeholder="->">
+            <button id="bet">Bet</button>
+            <button id="play-again">Play Again</button>
+        </div>
+
+        <h2> You: <span id="player-score"></span></h2>
+        <div id="player-cards"></div>
+
+    
+
+
+        <div id="buttons">
+            <button id="hit">Hit</button>
+            <button id="stay">Stay</button>
         
-    </div>
-    <div id="bet-container">
-        <input type="number" id="bet-input" placeholder="->">
-        <button id="bet">Bet</button>
-        <button id="play-again">Play Again</button>
-      </div>
-</div>
-    <h2> You: <span id="player-score"></span></h2>
-    <div id="player-cards" class="cards"></div>
+        </div>
+        
 
-   
-
-
-    <div id="buttons">
-        <button id="hit">Hit</button>
-        <button id="stay">Stay</button>
-      
-      </div>
-      
-
-<p id="results"></p>
+        <p id="results"></p>
 </div>
 </body>
 </html>
