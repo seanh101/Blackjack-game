@@ -12,6 +12,7 @@ let chipAmount = 500;
 let betAmount = 0;
 
 // Constants
+
 const suits = ['spades', 'clubs', 'diamonds', 'hearts'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 
@@ -111,7 +112,7 @@ function hit() {
     
     }
 
-
+console.log(faceDown);
 
     function stay() {
         dealerScore = reduceAce(dealerScore, dealerAces);
