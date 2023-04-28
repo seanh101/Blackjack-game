@@ -148,15 +148,16 @@ function hit() {
     if (reduceAce(playerScore, playerAces) > 21) {
         playerCanHit = false;
         message = "YOU LOSE!";
-        chipAmount -= betAmount;
     }
         
-    dealerScoreDisplay.innerText = dealerScore;
-    playerScoreDisplay.innerText = playerScore;
+    dealerScoreDisplay.textContent = reduceAce(dealerScore, dealerAces);
+    playerScoreDisplay.textContent = reduceAce(playerScore, playerAces);
+
     resultsDisplay.innerText = message;
     
     }
 
+// Stay Function
 function stay() {
     playerCanHit = false;
     while (dealerScore < 17) {
@@ -173,9 +174,6 @@ function stay() {
     let playerScoreDisplayValue = reduceAce(playerScore, playerAces);
     let dealerScoreDisplayValue = reduceAce(dealerScore, dealerAces);
 
-    playerScoreDisplay.textContent = `Player: ${playerScoreDisplayValue}`;
-    dealerScoreDisplay.textContent = `Dealer: ${dealerScoreDisplayValue}`;
-
     if (dealerScoreDisplayValue > 21 || playerScoreDisplayValue > dealerScoreDisplayValue) {
         resultsDisplay.textContent = 'You win!';
         chipAmount += betAmount * 2;
@@ -190,6 +188,7 @@ function stay() {
     updateChips();
 }
 
+// Return numerical rank value
 function getRank(card) {
     let data = card.split('-');
     let rank = data[0];
@@ -203,6 +202,7 @@ function getRank(card) {
     return parseInt(rank);
 }
 
+// take card as input, 1 for Ace 0 other
 function checkAce(card) {
     if (card[0] === "A") {
         return 1;
@@ -210,6 +210,7 @@ function checkAce(card) {
     return 0;
 }
 
+// Adjusts score acording to how many aces
 function reduceAce(playerScore, playerAces) {
     while (playerScore > 21 && playerAces > 0) {
         playerScore -= 10;
@@ -218,6 +219,7 @@ function reduceAce(playerScore, playerAces) {
     return playerScore;
 }
 
+// Reset game
 function playAgain() {
     resultsDisplay.textContent = "";
     dealerScoreDisplay.textContent = "";
@@ -242,6 +244,7 @@ function playAgain() {
     chipAmountDisplay.textContent = chipAmount;
 }
 
+// Update Chips after bet
 function updateChips(betAmount, isWin) {
     const betInput = parseInt(document.getElementById("bet-input").value);
     const chipAmount = parseInt(document.getElementById("chip-amount").innerText);

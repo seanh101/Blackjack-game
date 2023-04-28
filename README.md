@@ -16,7 +16,7 @@ A simple Blackjack game with real cards, hit, stay, bet and play-again buttons!
 
 # Getting Started
 
-[Click to Play BlackJack!](your deployment url here)
+[Click to Play BlackJack!](https://seanh101.github.io/Blackjack-game/)
 
 Instructions:
 1) New game will start upon load.
