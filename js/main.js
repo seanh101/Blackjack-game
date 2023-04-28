@@ -63,8 +63,6 @@ function shuffleDeck() {
     }
 }
 
-
-
 // Start the game
 function dealCards() {
     
@@ -73,7 +71,6 @@ function dealCards() {
     while (dealerCardContainer.firstElementChild) {
         dealerCardContainer.firstElementChild.remove();
        }
-       
    
     // deal one card face-down
     let faceDownCardImg = document.createElement("img");
@@ -104,7 +101,6 @@ function dealCards() {
         dealerAces += checkAce(dealerHitCard);
         dealerCardContainer.append(dealerHitCardImg);
     }
-      
 
     // set dealer score
     console.log(dealerScore);
@@ -191,7 +187,6 @@ function stay() {
         chipAmount += betAmount;
     }
     
-
     updateChips();
 }
 
@@ -222,7 +217,6 @@ function reduceAce(playerScore, playerAces) {
     }
     return playerScore;
 }
-
 
 function playAgain() {
     resultsDisplay.textContent = "";
