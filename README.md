@@ -5,7 +5,7 @@ A simple Blackjack game with real cards, hit, stay, bet and play-again buttons!
 # Screenshot
 
 <img src="./Imgs/blackjack_final_wireframe1.png">
-<img src="./Imgs/blackjack_final_wireframe2.png">
+<img src="./Imgs/blackjack_final_wireframe3.png">
 
 # Technologies Used
 
