@@ -38,7 +38,7 @@ body {
     overflow: hidden;
 }
 
-#hit, #stay, #play-again {
+#hit, #stay, #bet, #play-again {
     width: 100px;
     height: 50x;
     font-size: 15px;

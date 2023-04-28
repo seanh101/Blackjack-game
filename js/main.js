@@ -31,7 +31,7 @@ const chipAmountDisplay = document.getElementById('chip-amount');
 hitButton.addEventListener("click", hit);
 stayButton.addEventListener("click", stay);
 playAgainBtn.addEventListener("click", playAgain);
-hitButton.addEventListener("click", updateChips);
+
 
 // Load game
 window.onload = function() {
@@ -176,16 +176,16 @@ function stay() {
 
     if (dealerScoreDisplayValue > 21 || playerScoreDisplayValue > dealerScoreDisplayValue) {
         resultsDisplay.textContent = 'You win!';
-        chipAmount += betAmount * 2;
+      
     } else if (dealerScoreDisplayValue > playerScoreDisplayValue) {
         resultsDisplay.textContent = 'You lose!';
-        chipAmount -= betAmount;
+        
     } else {
         resultsDisplay.textContent = 'Push!';
-        chipAmount += betAmount;
+        
     }
-    
-    updateChips();
+    playerCanHit = false;
+
 }
 
 // Return numerical rank value
@@ -245,20 +245,31 @@ function playAgain() {
 }
 
 // Update Chips after bet
-function updateChips(betAmount, isWin) {
-    const betInput = parseInt(document.getElementById("bet-input").value);
-    const chipAmount = parseInt(document.getElementById("chip-amount").innerText);
-    const isWIn = (playerScore > dealerScore && playerScore <= 21);
-    
-    if (isWin) {
-      const winnings = betAmount * 2;
-      chipAmount.textContent = parseInt(chipAmount.textContent) + winnings;
-    } else {
-      chipAmount.textContent = parseInt(chipAmount.textContent) - betAmount;
-    }
-    
-    betInput.value = ""; // reset bet input
-  }
-
-
+let playerChips = chipAmount;
+// Add event listener for bet button
+document.getElementById("bet").addEventListener("click", function() {
+    // Get bet amount entered by user
+    let betAmount = document.getElementById("bet-input").value;
   
+  
+     // Convert bet amount to integer
+     betAmount = parseInt(betAmount);
+
+     // Subtract bet amount from player's chips and update display
+     playerChips -= betAmount;
+     document.getElementById("chips").innerHTML = `Chips: ${playerChips}`;
+ 
+     // Start the game
+     let gameResult = dealCards();
+ 
+     // Update player's chips based on game outcome
+     if (gameResult === "win") {
+       playerChips += betAmount * 2; // double the bet amount for a win
+       document.getElementById("results").innerHTML = "You win!";
+     } else {
+       document.getElementById("results").innerHTML = "You lose!";
+     }
+     document.getElementById("chips").innerHTML = `Chips: ${playerChips}`;
+   });
+ 
+   
