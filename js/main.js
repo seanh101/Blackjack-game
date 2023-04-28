@@ -75,8 +75,7 @@ function dealCards() {
        }
        
    
-       // deal one card face-down
-       
+    // deal one card face-down
     let faceDownCardImg = document.createElement("img");
     let faceDownCard = deck.pop();
        
@@ -86,8 +85,6 @@ function dealCards() {
     dealerCardContainer.append(faceDownCardImg);
    
     // deal one card face-up
-
-     
     let faceUpCardImg = document.createElement("img");
     let faceUpCard = deck.pop();
     let faceUpSuit = faceUpCard.split("-")[1];
@@ -138,7 +135,8 @@ function hit() {
     cardImg.src = `./css/card-library/images/${suit}-r${rank}.svg`;
     playerScore += getRank(card);
     playerAces += checkAce(card);
-  playerCardContainer.append(cardImg);
+    playerCardContainer.append(cardImg);
+
     while (dealerScore < 17) {
         let dealerHitCardImg = document.createElement("img");
         let dealerHitCard = deck.pop();
@@ -150,14 +148,12 @@ function hit() {
         dealerCardContainer.append(dealerHitCardImg);
     }
 
-    
+    let message = "";
     if (reduceAce(playerScore, playerAces) > 21) {
         playerCanHit = false;
         message = "YOU LOSE!";
         chipAmount -= betAmount;
     }
-  
-    let message = "";
         
     dealerScoreDisplay.innerText = dealerScore;
     playerScoreDisplay.innerText = playerScore;
@@ -165,11 +161,8 @@ function hit() {
     
     }
 
-
-
 function stay() {
     playerCanHit = false;
-
     while (dealerScore < 17) {
         let dealerHitCardImg = document.createElement("img");
         let dealerHitCard = deck.pop();
@@ -189,20 +182,18 @@ function stay() {
 
     if (dealerScoreDisplayValue > 21 || playerScoreDisplayValue > dealerScoreDisplayValue) {
         resultsDisplay.textContent = 'You win!';
-        chipAmount += betAmount;
+        chipAmount += betAmount * 2;
     } else if (dealerScoreDisplayValue > playerScoreDisplayValue) {
         resultsDisplay.textContent = 'You lose!';
         chipAmount -= betAmount;
     } else {
         resultsDisplay.textContent = 'Push!';
+        chipAmount += betAmount;
     }
-    betAmount = 0;
-}
     
 
-
-
-
+    updateChips();
+}
 
 function getRank(card) {
     let data = card.split('-');
@@ -257,23 +248,20 @@ function playAgain() {
     chipAmountDisplay.textContent = chipAmount;
 }
 
-
-
-
-
 function updateChips(betAmount, isWin) {
     const betInput = parseInt(document.getElementById("bet-input").value);
     const chipAmount = parseInt(document.getElementById("chip-amount").innerText);
+    const isWIn = (playerScore > dealerScore && playerScore <= 21);
     
     if (isWin) {
       const winnings = betAmount * 2;
-      chipAmount.textContent = Number(chipAmount.textContent) + winnings;
+      chipAmount.textContent = parseInt(chipAmount.textContent) + winnings;
     } else {
-      chipAmount.textContent = Number(chipAmount.textContent) - betAmount;
+      chipAmount.textContent = parseInt(chipAmount.textContent) - betAmount;
     }
     
     betInput.value = ""; // reset bet input
   }
-  hitButton.addEventListener("click", updateChips);
+
 
   
