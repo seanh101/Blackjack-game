@@ -6,67 +6,41 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 #game {
     border-style: solid;
     border-color: gold;
     border-radius: 25px;
+    width: 750px;
+  
 }
 
-#dealer-cards img {
+#dealer-cards img, #player-cards img {
     height: 175px;
     width: 125px;
     margin: 1;
     box-sizing: border-box;
-  display: inline-block;
-  margin: 5px 5px 25px 5px;
-  cursor: pointer;
-  /* Set the card's dimensions, and size it relative to
-     it's font size. */
-  font-size: inherit;
-  /* Add a default background color and border. */
-  background-color: #fff;
-  border-radius: 0.20em;
-  border: 1px solid #c3c3c3;
-  /* Scale and set the background settings. */
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  /* "Hide" any text within the element (use text to be
-     simply compliant with screen readers, etc.). */
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+    display: inline-block;
+    margin: 5px 5px 25px 5px;
+    cursor: pointer;
+    font-size: inherit;
+    background-color: #fff;
+    border-radius: 0.20em;
+    border: 1px solid #c3c3c3;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-
-
-#player-cards img {
-    height: 175px;
-    width: 125px;
-    margin: 1;
-    box-sizing: border-box;
-  display: inline-block;
-  margin: 5px 5px 25px 5px;
-  cursor: pointer;
-  /* Set the card's dimensions, and size it relative to
-     it's font size. */
-  font-size: inherit;
-  /* Add a default background color and border. */
-  background-color: #fff;
-  border-radius: 0.20em;
-  border: 1px solid #c3c3c3;
-  /* Scale and set the background settings. */
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  /* "Hide" any text within the element (use text to be
-     simply compliant with screen readers, etc.). */
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
 
 #hit, #stay, #bet, #play-again {
     width: 100px;
@@ -75,10 +49,12 @@ body {
     border-width: thick;
     border-color: gold;
     border-radius: 25px;
+    color: black
 }
 
 #results {
     font-weight: bold;
+    color: greenyellow;
 }
 
 #chip-amount {
@@ -108,8 +84,4 @@ h3 {
     border-width: thick;
     border-color: black;
     border-style: dashed;
-}
-
-#results {
-    color: greenyellow;
 }
